@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeftIcon, MicrophoneIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 import { PronunciationEvaluator } from '@/components/pronunciation/PronunciationEvaluator';
 import { evaluatePronunciation } from '@/lib/api';
 
