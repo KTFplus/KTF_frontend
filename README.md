@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KTF 한국어 학습 도우미
 
-## Getting Started
+외국인 한국어 학습자를 위한 음성 인식 데모 웹앱입니다.
 
-First, run the development server:
+## 주요 기능
 
+- 오디오 파일 업로드 및 웹 녹음
+- ASR(음성 인식) 및 화자 분리
+- 발음 평가 (준비된 문장 기반)
+
+## 기술 스택
+
+- Next.js 14
+- TypeScript
+- TailwindCSS
+- WaveSurfer.js
+- MediaStream Recording API
+
+## 시작하기
+
+1. 저장소 클론
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/ktf_front.git
+cd ktf_front
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. 의존성 설치
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. 환경 변수 설정
+`.env.local` 파일을 생성하고 다음 내용을 추가합니다:
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. 개발 서버 실행
+```bash
+npm run dev
+```
 
-## Learn More
+5. 브라우저에서 http://localhost:3000 접속
 
-To learn more about Next.js, take a look at the following resources:
+## API 엔드포인트
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### POST /upload-audio
+오디오 파일을 업로드하고 음성 인식 결과를 반환합니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### GET /pronunciation-sentences
+발음 평가용 문장 목록을 반환합니다.
 
-## Deploy on Vercel
+### POST /pronunciation-evaluate
+녹음된 발음을 평가하고 점수와 피드백을 반환합니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 배포
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+이 프로젝트는 Vercel을 통해 배포됩니다. main 브랜치에 push하면 자동으로 배포가 진행됩니다.
+
+배포 시 다음 환경 변수를 설정해야 합니다:
+- `NEXT_PUBLIC_API_URL`: 백엔드 API 서버 URL
+
+## 라이선스
+
+MIT
