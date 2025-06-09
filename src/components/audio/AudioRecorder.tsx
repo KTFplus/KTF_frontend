@@ -21,8 +21,8 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplet
       };
 
       mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(chunksRef.current, { type: 'audio/wav' });
-        onRecordingComplete(audioBlob);
+        const blob = new Blob(chunksRef.current, { type: 'audio/wav' });
+        onRecordingComplete(blob);
         stream.getTracks().forEach(track => track.stop());
       };
 
@@ -42,22 +42,22 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplet
   };
 
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex justify-center">
       {!isRecording ? (
         <button
           onClick={startRecording}
-          className="flex items-center gap-3 px-6 py-3 text-white bg-zinc-800 rounded-xl hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="flex items-center px-6 py-3 text-lg font-medium text-white bg-zinc-800 rounded-xl hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          <span className="text-xl">🎙️</span>
-          <span className="text-lg font-medium">녹음 시작</span>
+          <MicrophoneIcon className="w-6 h-6 mr-2 text-gray-400" />
+          녹음 시작
         </button>
       ) : (
         <button
           onClick={stopRecording}
-          className="flex items-center gap-3 px-6 py-3 text-white bg-rose-900/80 rounded-xl hover:bg-rose-800/80 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl animate-pulse"
+          className="flex items-center px-6 py-3 text-lg font-medium text-white bg-rose-900/80 rounded-xl hover:bg-rose-800/80 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl animate-pulse"
         >
-          <span className="text-xl">⏹️</span>
-          <span className="text-lg font-medium">녹음 중지</span>
+          <StopIcon className="w-6 h-6 mr-2 text-rose-300" />
+          녹음 중지
         </button>
       )}
     </div>

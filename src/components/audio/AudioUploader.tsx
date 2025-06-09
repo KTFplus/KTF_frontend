@@ -64,12 +64,12 @@ export const AudioUploader: React.FC<AudioUploaderProps> = ({
         onChange={handleFileSelect}
         className="hidden"
       />
-      <span className="text-4xl mb-4 block">📂</span>
+      <DocumentArrowUpIcon className="w-16 h-16 mx-auto mb-4 text-gray-400" />
       <p className="text-lg font-medium text-gray-200 mb-2">
         클릭하거나 파일을 드래그하여 업로드
       </p>
       <p className="text-sm text-gray-400">
-        지원 형식: WAV, MP3 ✨
+        지원 형식: WAV, MP3
       </p>
     </div>
   );

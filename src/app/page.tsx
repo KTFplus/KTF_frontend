@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { MicrophoneIcon } from '@heroicons/react/24/solid';
+import { SpeakerWaveIcon, DocumentTextIcon, AcademicCapIcon } from '@heroicons/react/24/solid';
 import { AudioRecorder } from '@/components/audio/AudioRecorder';
-import { AudioPlayer } from '@/components/audio/AudioPlayer';
 import { AudioUploader } from '@/components/audio/AudioUploader';
+import { AudioPlayer } from '@/components/audio/AudioPlayer';
 import { TranscriptViewer } from '@/components/audio/TranscriptViewer';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { ErrorMessage } from '@/components/ui/ErrorMessage';
@@ -40,7 +40,7 @@ export default function Home() {
 
   const retryLastOperation = () => {
     setError(null);
-    // 여기에 마지막 작업을 다시 시도하는 로직을 추가할 수 있습니다.
+    // Implement retry logic here
   };
 
   return (
@@ -48,17 +48,26 @@ export default function Home() {
       <div className="container mx-auto max-w-4xl px-4 py-12">
         <h1 className="mb-12 text-4xl font-bold text-center tracking-tight">
           <span className="text-gray-100">
-            한국어 학습 도우미 ✨
+            KTF: Korean Transcriber+ for Foreign learners
           </span>
         </h1>
 
         <div className="grid gap-8 md:grid-cols-2 mb-12">
           <div className="md:col-span-2">
             <div className="p-8 bg-gray-800/50 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl transition-shadow duration-300 backdrop-blur-sm">
-              <h2 className="mb-6 text-2xl font-semibold text-gray-100 flex items-center">
-                <span className="text-2xl mr-3">🎙️</span>
-                음성 입력
-              </h2>
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-semibold text-gray-100 flex items-center">
+                  <SpeakerWaveIcon className="w-6 h-6 mr-3 text-gray-400" />
+                  음성 입력
+                </h2>
+                <Link
+                  href="/pronunciation"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-zinc-800 rounded-xl hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <AcademicCapIcon className="w-5 h-5 mr-2 text-gray-400" />
+                  발음 평가 시작하기
+                </Link>
+              </div>
               
               <div className="space-y-6">
                 <div className="p-4 bg-gray-900/50 rounded-xl border border-gray-700">
@@ -103,7 +112,7 @@ export default function Home() {
             <div className="md:col-span-2">
               <div className="p-8 bg-gray-800/50 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl transition-shadow duration-300 backdrop-blur-sm">
                 <h2 className="mb-6 text-2xl font-semibold text-gray-100 flex items-center">
-                  <span className="text-2xl mr-3">📝</span>
+                  <DocumentTextIcon className="w-6 h-6 mr-3 text-gray-400" />
                   분석 결과
                 </h2>
                 <TranscriptViewer
@@ -113,16 +122,6 @@ export default function Home() {
               </div>
             </div>
           )}
-        </div>
-
-        <div className="flex justify-center">
-          <Link
-            href="/pronunciation"
-            className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-zinc-800 rounded-xl hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            <span className="text-2xl mr-3">🎯</span>
-            발음 평가 시작하기
-          </Link>
         </div>
       </div>
     </main>

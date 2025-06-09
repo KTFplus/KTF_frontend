@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PronunciationEvaluatorProps } from '@/types';
 import { AudioRecorder } from '../audio/AudioRecorder';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
+import { DocumentTextIcon, MicrophoneIcon, ChartBarIcon } from '@heroicons/react/24/solid';
 
 export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
   sentences,
@@ -37,24 +38,11 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
     }
   };
 
-  const getFeedbackEmoji = (feedback: string) => {
-    switch (feedback) {
-      case '상':
-        return '🌟';
-      case '중':
-        return '⭐';
-      case '하':
-        return '✨';
-      default:
-        return '✨';
-    }
-  };
-
   return (
     <div className="w-full">
       <div className="mb-8">
         <label className="block mb-3 text-lg font-medium text-gray-200 flex items-center">
-          <span className="text-2xl mr-3">📝</span>
+          <DocumentTextIcon className="w-6 h-6 mr-3 text-gray-400" />
           평가할 문장 선택
         </label>
         <select
@@ -72,7 +60,7 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
 
       <div className="p-6 mb-8 bg-zinc-900/30 rounded-xl border border-zinc-800">
         <h3 className="mb-2 text-sm font-medium text-gray-400 uppercase tracking-wide flex items-center">
-          <span className="text-xl mr-2">💭</span>
+          <DocumentTextIcon className="w-5 h-5 mr-2 text-gray-400" />
           선택된 문장
         </h3>
         <p className="text-xl text-gray-100">{selectedSentence.text}</p>
@@ -81,7 +69,7 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
       <div className="mb-8">
         <div className="p-6 bg-gray-900/50 rounded-xl border border-gray-700">
           <h3 className="mb-4 text-sm font-medium text-gray-300 uppercase tracking-wide flex items-center">
-            <span className="text-xl mr-2">🎙️</span>
+            <MicrophoneIcon className="w-5 h-5 mr-2 text-gray-400" />
             음성 녹음
           </h3>
           <AudioRecorder onRecordingComplete={handleRecordingComplete} />
@@ -98,7 +86,7 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
       {result && (
         <div className="p-6 bg-zinc-900/30 rounded-xl border border-zinc-800">
           <h3 className="mb-4 text-sm font-medium text-gray-300 uppercase tracking-wide flex items-center">
-            <span className="text-xl mr-2">📊</span>
+            <ChartBarIcon className="w-5 h-5 mr-2 text-gray-400" />
             평가 결과
           </h3>
           <div className="space-y-4">
@@ -108,8 +96,7 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
             </div>
             <div className="flex items-center">
               <span className="text-gray-300 font-medium mr-3">피드백:</span>
-              <span className={`text-lg font-semibold ${getFeedbackColor(result.feedback)} px-4 py-1.5 bg-gray-900/50 rounded-full border border-gray-700 flex items-center`}>
-                <span className="mr-2">{getFeedbackEmoji(result.feedback)}</span>
+              <span className={`text-lg font-semibold ${getFeedbackColor(result.feedback)} px-4 py-1.5 bg-gray-900/50 rounded-full border border-gray-700`}>
                 {result.feedback}
               </span>
             </div>

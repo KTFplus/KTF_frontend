@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { ArrowLeftIcon, MicrophoneIcon } from '@heroicons/react/24/solid';
 import { PronunciationEvaluator } from '@/components/pronunciation/PronunciationEvaluator';
 import { evaluatePronunciation } from '@/lib/api';
 
@@ -30,7 +31,7 @@ export default function PronunciationPage() {
             href="/"
             className="inline-flex items-center px-4 py-2 text-gray-300 hover:text-white bg-zinc-800/50 rounded-lg shadow-sm hover:shadow transition-all duration-300 border border-gray-700"
           >
-            <span className="text-xl mr-2">⬅️</span>
+            <ArrowLeftIcon className="w-5 h-5 mr-2 text-gray-400" />
             메인으로 돌아가기
           </Link>
         </div>
@@ -38,11 +39,11 @@ export default function PronunciationPage() {
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold tracking-tight mb-4">
             <span className="text-gray-100">
-              발음 평가 연습 🎯
+              발음 평가
             </span>
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            아래의 문장들을 선택하여 발음을 연습하고 평가받을 수 있습니다 ✨
+            아래의 문장들을 선택하여 발음을 연습하고 평가받을 수 있습니다
           </p>
         </div>
 
