@@ -1,6 +1,9 @@
 export interface AudioUploadResponse {
   transcript: string;
-  speakers: string[];
+  speakers: {
+    speaker: string;
+    text: string;
+  }[];
 }
 
 export interface PronunciationEvaluationResponse {
@@ -31,12 +34,6 @@ export interface TranscriptViewerProps {
 }
 
 export interface PronunciationEvaluatorProps {
-  sentences: Array<{
-    id: string;
-    text: string;
-  }>;
-  onEvaluate: (audioBlob: Blob, sentenceId: string) => Promise<{
-    score: number;
-    feedback: string;
-  }>;
+  sentences: PronunciationSentence[];
+  onEvaluate: (audioBlob: Blob, sentenceId: string) => Promise<PronunciationEvaluationResponse>;
 } 

@@ -10,35 +10,13 @@ const api = axios.create({
   },
 });
 
-export interface AudioUploadResponse {
-  transcript: string;
-  speakers: string[];
-}
+export const uploadAudio = async (audioFile: File | Blob, userId: string): Promise<AudioUploadResponse> => {
+  const formData = new FormData();
+  formData.append('audio', audioFile);
+  formData.append('user_id', userId);
 
-export const uploadAudio = async (
-  audioData: Blob | File,
-  userId: string
-): Promise<AudioUploadResponse> => {
-  try {
-    const formData = new FormData();
-    formData.append('audio', audioData);
-    formData.append('userId', userId);
-
-    const response = await fetch('/api/upload-audio', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to upload audio');
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error uploading audio:', error);
-    throw error;
-  }
+  const response = await api.post<AudioUploadResponse>('/upload-audio', formData);
+  return response.data;
 };
 
 export const getPronunciationSentences = async (): Promise<PronunciationSentence[]> => {
