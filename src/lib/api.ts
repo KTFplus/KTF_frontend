@@ -13,7 +13,7 @@ const api = axios.create({
 export const uploadAudio = async (audioFile: File | Blob, userId: string): Promise<AudioUploadResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('user_id', userId);
+  formData.append('userId', userId);
 
   const response = await api.post<AudioUploadResponse>('/upload-audio', formData);
   return response.data;
@@ -31,8 +31,8 @@ export const evaluatePronunciation = async (
 ): Promise<PronunciationEvaluationResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('sentence_id', sentenceId);
-  formData.append('user_id', userId);
+  formData.append('sentenceId', sentenceId);
+  formData.append('userId', userId);
 
   const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
   return response.data;
