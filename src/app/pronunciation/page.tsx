@@ -8,9 +8,16 @@ import { evaluatePronunciation } from '@/lib/api';
 
 export default function PronunciationPage() {
   const [sentences] = useState([
-    { id: '1', text: '안녕하세요, 만나서 반갑습니다.' },
-    { id: '2', text: '오늘 날씨가 참 좋네요.' },
-    { id: '3', text: '한국어 공부가 재미있어요.' },
+    { id: '1', text: '오늘은 날씨가 아주 맑아요.' },
+    { id: '2', text: '저는 한국어를 배우고 있습니다.' },
+    { id: '3', text: '학교에 가는 길에 친구를 만났어요.' },
+    { id: '4', text: '사과와 바나나를 샀습니다.' },
+    { id: '5', text: '내일 같이 점심 먹을까요?' },
+    { id: '6', text: '저녁에 공원에서 산책했어요.' },
+    { id: '7', text: '책상 위에 연필이 있어요.' },
+    { id: '8', text: '내일은 중요한 시험이 있습니다.' },
+    { id: '9', text: '머리가 아파서 병원에 왔어요.' },
+    { id: '10', text: '지하철을 타고 회사에 갑니다.' },
   ]);
 
   const handleEvaluate = async (audioBlob: Blob, sentenceId: string) => {
