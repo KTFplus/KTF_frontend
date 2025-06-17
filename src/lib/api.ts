@@ -6,7 +6,7 @@ import {
 } from '@/types';
 
 // ✅ 환경변수 또는 기본 도메인 사용
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ktf-flask.onrender.com/pronunciation-evaluate';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ktf-flask.onrender.com';
 console.log("✅ API BASE:", API_BASE_URL);
 
 const api = axios.create({
@@ -46,8 +46,8 @@ export const evaluatePronunciation = async (
   console.log("🚀 evaluatePronunciation payload:", Array.from(formData.entries()));
 
   const response = await api.post<PronunciationEvaluationResponse>(
-    'pronunciation-evaluate',
-    formData
+  'pronunciation-evaluate',
+  formData  
   );
   return response.data;
 };
