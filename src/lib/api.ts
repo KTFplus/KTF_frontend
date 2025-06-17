@@ -34,6 +34,6 @@ export const evaluatePronunciation = async (
   formData.append('sentenceId', sentenceId);
   formData.append('userId', userId);
 
-  const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
+  const response = await api.post<PronunciationEvaluationResponse>('/api/pronunciation-evaluate', formData);
   return response.data;
 }; 
