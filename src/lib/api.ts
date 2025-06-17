@@ -3,6 +3,8 @@ import { AudioUploadResponse, PronunciationEvaluationResponse, PronunciationSent
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://wise-positively-octopus.ngrok-free.app';
 
+console.log("✅ API BASE:", API_BASE_URL);
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
