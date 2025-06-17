@@ -6,7 +6,7 @@ import {
 } from '@/types';
 
 // ✅ 환경변수 또는 기본 도메인 사용
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://wise-positively-octopus.ngrok-free.app';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ktf-flask.onrender.com/pronunciation-evaluate';
 console.log("✅ API BASE:", API_BASE_URL);
 
 const api = axios.create({
@@ -22,7 +22,7 @@ export const uploadAudio = async (
 ): Promise<AudioUploadResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('userId', userId);  // ✅ camelCase (Flask expects this)
+  formData.append('userId', userId);
 
   const response = await api.post<AudioUploadResponse>('/upload-audio', formData);
   return response.data;
@@ -40,8 +40,8 @@ export const evaluatePronunciation = async (
 ): Promise<PronunciationEvaluationResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('sentenceId', sentenceId);  // ✅ camelCase
-  formData.append('userId', userId);          // ✅ camelCase
+  formData.append('sentenceId', sentenceId);
+  formData.append('userId', userId);
 
   console.log("🚀 evaluatePronunciation payload:", Array.from(formData.entries()));
 
