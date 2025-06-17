@@ -35,6 +35,6 @@ export const evaluatePronunciation = async (
   formData.append('user_id', userId);          // ✅ snake_case로 수정
   console.log("🚨 DEBUG KEYS:", Array.from(formData.keys()));
 
-  const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
+  const response = await api.post<PronunciationEvaluationResponse>('/api/evaluate', formData);
   return response.data;
 };
