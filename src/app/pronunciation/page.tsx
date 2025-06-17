@@ -26,7 +26,7 @@ export default function PronunciationPage() {
       formData.append('audio', audioBlob);
 
       try {
-        const response = await fetch('https://f15f-34-16-173-13.ngrok-free.app/api/evaluate', {
+        const response = await fetch('https://wise-positively-octopus.ngrok-free.app', {
           method: 'POST',
           body: formData,
         });
