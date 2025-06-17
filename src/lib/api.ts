@@ -15,7 +15,8 @@ export const uploadAudio = async (audioFile: File | Blob, userId: string): Promi
   formData.append('audio', audioFile);
   formData.append('userId', userId);
 
-  const response = await api.post<AudioUploadResponse>('/pronunciation-evaluate', formData);
+  const response = await api.post<AudioUploadResponse>('/upload-audio', formData);  // ✅ 수정됨
+
   return response.data;
 };
 
