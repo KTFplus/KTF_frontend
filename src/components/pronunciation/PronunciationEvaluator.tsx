@@ -13,6 +13,11 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
   const [result, setResult] = useState<{ score: number; feedback: string } | null>(null);
 
   const handleRecordingComplete = async (audioBlob: Blob) => {
+    console.log("🎙️ 오디오 Blob 크기:", audioBlob.size);  // ← 추가
+    if (audioBlob.size === 0) {
+      alert("❗ 녹음된 오디오가 없습니다. 마이크 권한을 확인해주세요.");
+      return;
+    }
     try {
       setIsEvaluating(true);
       const evaluationResult = await onEvaluate(audioBlob, selectedSentence.id);
