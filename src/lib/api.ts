@@ -1,8 +1,12 @@
 import axios from 'axios';
-import { AudioUploadResponse, PronunciationEvaluationResponse, PronunciationSentence } from '@/types';
+import {
+  AudioUploadResponse,
+  PronunciationEvaluationResponse,
+  PronunciationSentence
+} from '@/types';
 
+// ✅ 환경변수 또는 기본 도메인 사용
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://wise-positively-octopus.ngrok-free.app';
-
 console.log("✅ API BASE:", API_BASE_URL);
 
 const api = axios.create({
@@ -12,10 +16,13 @@ const api = axios.create({
   },
 });
 
-export const uploadAudio = async (audioFile: File | Blob, userId: string): Promise<AudioUploadResponse> => {
+export const uploadAudio = async (
+  audioFile: File | Blob,
+  userId: string
+): Promise<AudioUploadResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('user_id', userId);  // ✅ snake_case로 수정
+  formData.append('userId', userId);  // ✅ camelCase (Flask expects this)
 
   const response = await api.post<AudioUploadResponse>('/upload-audio', formData);
   return response.data;
@@ -33,12 +40,11 @@ export const evaluatePronunciation = async (
 ): Promise<PronunciationEvaluationResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('sentence_id', sentenceId);  // ✅ snake_case로 수정
-  formData.append('user_id', userId);          // ✅ snake_case로 수정
-  console.log("🚨 DEBUG KEYS:", Array.from(formData.keys()));
+  formData.append('sentenceId', sentenceId);  // ✅ camelCase
+  formData.append('userId', userId);          // ✅ camelCase
 
-  // ✅ Flask의 실제 엔드포인트와 일치
+  console.log("🚀 evaluatePronunciation payload:", Array.from(formData.entries()));
+
   const response = await api.post<PronunciationEvaluationResponse>('/api/pronunciation-evaluate', formData);
-
   return response.data;
 };
