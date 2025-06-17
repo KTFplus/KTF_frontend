@@ -15,7 +15,7 @@ export const PronunciationEvaluator: React.FC<PronunciationEvaluatorProps> = ({
   const handleRecordingComplete = async (audioBlob: Blob) => {
     try {
       setIsEvaluating(true);
-      const evaluationResult = await onEvaluate(audioBlob, selectedSentence.id);
+      const evaluationResult = await onEvaluate(audioBlob, selectedSentence.id, 'test-user');
       setResult(evaluationResult);
     } catch (error) {
       console.error('Error evaluating pronunciation:', error);
