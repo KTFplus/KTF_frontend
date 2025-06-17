@@ -43,7 +43,7 @@ export const evaluatePronunciation = async (
   console.log("🚀 evaluatePronunciation payload:", Array.from(formData.entries()));
 
   const response = await api.post<PronunciationEvaluationResponse>(
-  'pronunciation-evaluate',
+  '/pronunciation-evaluate',
   formData  
   );
   return response.data;
