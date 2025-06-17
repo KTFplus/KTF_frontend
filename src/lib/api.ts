@@ -32,7 +32,7 @@ export const evaluatePronunciation = async (
   const formData = new FormData();
   formData.append('audio', audioFile);
   formData.append('sentenceId', sentenceId.toString());
-  formData.append('userId', 'test-users');
+  formData.append('userId', userId);
   console.log("🚨 DEBUG KEYS:", Array.from(formData.keys()));  // 🔍 여기!
 
   const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
