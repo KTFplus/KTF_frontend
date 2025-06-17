@@ -13,10 +13,9 @@ const api = axios.create({
 export const uploadAudio = async (audioFile: File | Blob, userId: string): Promise<AudioUploadResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('userId', userId);
+  formData.append('user_id', userId);  // ✅ snake_case로 수정
 
-  const response = await api.post<AudioUploadResponse>('/upload-audio', formData);  // ✅ 수정됨
-
+  const response = await api.post<AudioUploadResponse>('/upload-audio', formData);
   return response.data;
 };
 
@@ -32,10 +31,10 @@ export const evaluatePronunciation = async (
 ): Promise<PronunciationEvaluationResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('sentenceId', sentenceId.toString());
-  formData.append('userId', userId);
-  console.log("🚨 DEBUG KEYS:", Array.from(formData.keys()));  // 🔍 여기!
+  formData.append('sentence_id', sentenceId);  // ✅ snake_case로 수정
+  formData.append('user_id', userId);          // ✅ snake_case로 수정
+  console.log("🚨 DEBUG KEYS:", Array.from(formData.keys()));
 
   const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
   return response.data;
-}; 
+};
