@@ -21,7 +21,7 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplet
       };
 
       mediaRecorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: 'audio/wav' });
+        const blob = new Blob(chunksRef.current, { type: 'audio/webm' });  // ✅ WebM 포맷
         onRecordingComplete(blob);
         stream.getTracks().forEach(track => track.stop());
       };
