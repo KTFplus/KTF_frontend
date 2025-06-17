@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AudioUploadResponse, PronunciationEvaluationResponse, PronunciationSentence } from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ktf-backend.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://f15f-34-16-173-13.ngrok-free.app';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
