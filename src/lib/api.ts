@@ -15,7 +15,7 @@ export const uploadAudio = async (audioFile: File | Blob, userId: string): Promi
   formData.append('audio', audioFile);
   formData.append('userId', userId);
 
-  const response = await api.post<AudioUploadResponse>('/api/pronunciation-evaluate', formData);
+  const response = await api.post<AudioUploadResponse>('/pronunciation-evaluate', formData);
   return response.data;
 };
 
@@ -34,6 +34,6 @@ export const evaluatePronunciation = async (
   formData.append('sentenceId', sentenceId);
   formData.append('userId', userId);
 
-  const response = await api.post<PronunciationEvaluationResponse>('/api/pronunciation-evaluate', formData);
+  const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
   return response.data;
 }; 
