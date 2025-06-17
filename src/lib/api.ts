@@ -31,8 +31,8 @@ export const evaluatePronunciation = async (
 ): Promise<PronunciationEvaluationResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
-  formData.append('sentenceId', sentenceId);
-  formData.append('userId', userId);
+  formData.append('sentenceId', sentenceId.toString());
+  formData.append('userId', 'test-users');
 
   const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
   return response.data;
