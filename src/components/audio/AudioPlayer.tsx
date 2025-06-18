@@ -50,20 +50,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, onPlaybackCo
   };
 
   return (
-    <div className="w-full max-w-2xl p-4 bg-white rounded-lg shadow">
+    <div className="w-full">
       <div className="flex items-center gap-4 mb-4">
         <button
           onClick={togglePlayPause}
-          className="flex items-center justify-center w-10 h-10 text-white bg-blue-600 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-white bg-blue-800 rounded-full hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200"
         >
           {isPlaying ? (
-            <PauseIcon className="w-5 h-5" />
+            <PauseIcon className="w-5 h-5 sm:w-6 sm:h-6" />
           ) : (
-            <PlayIcon className="w-5 h-5" />
+            <PlayIcon className="w-5 h-5 sm:w-6 sm:h-6" />
           )}
         </button>
       </div>
-      <div ref={waveformRef} className="w-full" />
+      <div ref={waveformRef} className="w-full overflow-hidden" />
     </div>
   );
 }; 

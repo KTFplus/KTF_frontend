@@ -50,8 +50,8 @@ export const AudioUploader: React.FC<AudioUploaderProps> = ({
     <div
       className={`relative border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-300
         ${isDragging 
-          ? 'border-zinc-500 bg-zinc-900/50 scale-102' 
-          : 'border-gray-700 hover:border-zinc-500 hover:bg-zinc-900/30'}`}
+          ? 'border-zinc-400 bg-zinc-800/50 scale-102' 
+          : 'border-zinc-400/50 hover:border-zinc-400 hover:bg-zinc-800/50'}`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}

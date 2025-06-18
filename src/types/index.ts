@@ -6,9 +6,17 @@ export interface AudioUploadResponse {
   }[];
 }
 
+export interface PronunciationDiff {
+  user: string;
+  expected: string;
+  error: "insert" | "delete" | "substitute" | "s-swap" | "";
+}
+
 export interface PronunciationEvaluationResponse {
   score: number;
-  feedback: "상" | "중" | "하";
+  user_pronunciation: string;
+  target_pronunciation: string;
+  diff: PronunciationDiff[];
 }
 
 export interface PronunciationSentence {

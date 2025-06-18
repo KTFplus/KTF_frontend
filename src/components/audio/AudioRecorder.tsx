@@ -21,7 +21,7 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplet
       };
 
       mediaRecorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: 'audio/webm' });  // ✅ WebM 포맷
+        const blob = new Blob(chunksRef.current, { type: 'audio/wav' });
         onRecordingComplete(blob);
         stream.getTracks().forEach(track => track.stop());
       };
@@ -46,9 +46,9 @@ export const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplet
       {!isRecording ? (
         <button
           onClick={startRecording}
-          className="flex items-center px-6 py-3 text-lg font-medium text-white bg-zinc-800 rounded-xl hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="flex items-center px-6 py-3 text-lg font-medium text-white bg-[#2E3DAF] rounded-xl hover:bg-[#2E3DAF]/80 focus:outline-none focus:ring-2 focus:ring-[#2E3DAF] focus:ring-offset-2 focus:ring-offset-gray-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          <MicrophoneIcon className="w-6 h-6 mr-2 text-gray-400" />
+          <MicrophoneIcon className="w-6 h-6 mr-2 text-white" />
           녹음 시작
         </button>
       ) : (

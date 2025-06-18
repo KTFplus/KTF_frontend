@@ -1,22 +1,16 @@
 import axios from 'axios';
-import {
-  AudioUploadResponse,
-  PronunciationEvaluationResponse,
-  PronunciationSentence
-} from '@/types';
+import { AudioUploadResponse, PronunciationEvaluationResponse, PronunciationSentence } from '@/types';
 
-// ✅ 환경변수 또는 기본 도메인 사용
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ktf-flask.onrender.com';
-console.log("✅ API BASE:", API_BASE_URL);
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
 });
 
-export const uploadAudio = async (
-  audioFile: File | Blob,
-  userId: string
-): Promise<AudioUploadResponse> => {
+export const uploadAudio = async (audioFile: File | Blob, userId: string): Promise<AudioUploadResponse> => {
   const formData = new FormData();
   formData.append('audio', audioFile);
   formData.append('userId', userId);
@@ -40,11 +34,6 @@ export const evaluatePronunciation = async (
   formData.append('sentenceId', sentenceId);
   formData.append('userId', userId);
 
-  console.log("🚀 evaluatePronunciation payload:", Array.from(formData.entries()));
-
-  const response = await api.post<PronunciationEvaluationResponse>(
-  '/pronunciation-evaluate',
-  formData  
-  );
+  const response = await api.post<PronunciationEvaluationResponse>('/pronunciation-evaluate', formData);
   return response.data;
-};
+}; 
