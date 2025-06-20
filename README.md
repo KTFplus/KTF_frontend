@@ -1,6 +1,6 @@
 # KTF 한국어 학습 도우미
 
-외국인 한국어 학습자를 위한 음성 인식 데모 웹앱입니다.
+외국인 한국어 학습자를 위한 화자분리를 지원하는 transcriber입니다. 추가적으로 발음 평가 기능을 제공합니다.
 
 ## 주요 기능
 
@@ -47,19 +47,13 @@ npm run dev
 ### POST /upload-audio
 오디오 파일을 업로드하고 음성 인식 결과를 반환합니다.
 
-### GET /pronunciation-sentences
-발음 평가용 문장 목록을 반환합니다.
-
 ### POST /pronunciation-evaluate
 녹음된 발음을 평가하고 점수와 피드백을 반환합니다.
 
 ## 배포
-
-이 프로젝트는 Vercel을 통해 배포됩니다. main 브랜치에 push하면 자동으로 배포가 진행됩니다.
-
-배포 시 다음 환경 변수를 설정해야 합니다:
+Vercel
 - `NEXT_PUBLIC_API_URL`: 백엔드 API 서버 URL
+- vercel 배포는 organization을 지원하지 않기에 https://github.com/UReWUI/ktf_front 의 내용을 import 했습니다.
 
-## 라이선스
 
-MIT
+
