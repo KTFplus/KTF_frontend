@@ -53,7 +53,7 @@ npm run dev
 ## 배포
 Vercel
 - `NEXT_PUBLIC_API_URL`: 백엔드 API 서버 URL
-- vercel 배포는 organization을 지원하지 않기에 https://github.com/UReWUI/ktf_front 의 내용을 import 했습니다.
+- vercel 배포는 organization을 지원하지 않기 때문에 이 repo는 https://github.com/UReWUI/ktf_front 의 내용을 import한 것입니다.
 
 
 
