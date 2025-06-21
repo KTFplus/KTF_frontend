@@ -19,7 +19,7 @@
 
 1. 저장소 클론
 ```bash
-git clone https://github.com/your-username/ktf_front.git
+git clone https://github.com/KTFplus/KTF_frontend/ktf_front.git
 cd ktf_front
 ```
 
